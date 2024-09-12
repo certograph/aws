@@ -428,7 +428,7 @@ after `?`) params. If **ResponderAPI** does not do what you expect, verify that 
 
 It is possible to pass more than one param in the URL query string by joining them with an ampersand (`&`):
 
-```json
+```bash
 $ curl -vvv 'remotehost:8080?headers=Q29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi93aGF0ZXZlcg==&status_code=500'
 ```
 
@@ -441,7 +441,13 @@ longer period.
 ## Writing Tests with ResponderAPI
 
 **ResponderAPI**'s behaviour is controlled by request query params. If you want to understand how tests are written,
-read the **Usage** section below and read and execute tests found in the `tests` folder. You will find there tests of
+read the **Usage** section below and read and execute tests found in the [tests](../tests) folder. You will find there tests of
 all params as well as basic implementations of tests for all HTTP methods. These will give you a starting point.
+
+### Running Python tests
+
+```bash
+$ pytest
+```
 
 Copyright (c) 2024, Certograph Ltd
