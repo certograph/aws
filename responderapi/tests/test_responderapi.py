@@ -56,13 +56,11 @@ def test_default_response():
     assert resp_body.get("host") == f"{SERVER_HOST}"
     assert resp_body.get("url_path") == "/"
 
-    assert isinstance(resp_body.get("content_type"), str) is True
-    assert len(resp_body.get("content_type")) == 0
+    assert resp_body.get("content_type", None) is None
 
-    assert resp_body.get("content_length") == 0
-    assert len(resp_body.get("request_body")) == 0
-    assert resp_body.get("request_body") == ''
-    assert resp_body.get("found_headers") == None
+    assert resp_body.get("content_length", None) is None
+    assert resp_body.get("request_body", None) is None
+    assert resp_body.get("found_headers", None) is None
     assert resp_body.get("params") == {"random_delay": {}}
 
     assert isinstance(resp_body.get("responderapi_id"), str) is True
@@ -72,8 +70,7 @@ def test_default_response():
     assert len(resp_body.get("called_at")) > 0
     assert resp_body.get("called_at") < f"{datetime.now().isoformat()}Z"
 
-    assert isinstance(resp_body.get("execution_time"), str) is True
-    assert len(resp_body.get("execution_time")) > 0
+    assert resp_body.get("execution_time", None) > 0
 
 
 def test_request_protocol():
@@ -316,8 +313,8 @@ def test_request_get_response_has_execution_time():
     assert len(resp.text) > 0
     resp_body = json.loads(resp.text)
 
-    assert isinstance(resp_body.get("execution_time"), str) is True
-    assert len(resp_body.get("execution_time")) > 0
+    assert isinstance(resp_body.get("execution_time"), int) is True
+    assert resp_body.get("execution_time") > 0
 
 
 # ----------------------------------------------------------------
@@ -458,12 +455,12 @@ def test_http_request_user_agent():
     assert resp_body["user_agent"].startswith("python-requests/") == True
 
 
-def test_http_request_empty_content_type():
+def test_http_request_missing_content_type():
     """ response has no "content_type"
     """
     resp = requests.get(f"{REQUEST_PROTOCOL}://{SERVER_HOST}/")
     resp_body = json.loads(resp.text)
-    assert len(resp_body["content_type"]) == 0
+    assert resp_body.get("content_type") == None
 
 
 def test_http_request_no_headers():

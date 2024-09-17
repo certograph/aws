@@ -54,7 +54,7 @@ The response you will get will look similar to this:
   },
   "responderapi_id": "936a3c26-6e31-11ef-bde8-1ec32bd4abd5",
   "called_at": "2024-09-08T22:27:47.744046Z",
-  "execution_time": "11µs"
+  "execution_time": "12"
 }
 ```
 
@@ -74,7 +74,7 @@ sections of this manual.
 
 ### `delay` -- delaying response by *N* milliseconds
 
-**ResponderAPI** is quick. It will respond within a few milliseconds of receiving a request, but there are situations 
+**ResponderAPI** is quick. It will respond within a few microseconds of receiving a request, but there are situations 
 when you want to test what happens when there are delays. Such delays could be caused by misconfiguration of DNS, CDN, 
 routing, proxies, firewalls or load balancers to name just a few possible points of failure. Forcing delays deliberately 
 helps you discover those issues earlier.
@@ -100,7 +100,7 @@ The response will return the delay value in the `params` object:
   },
   ...
   "called_at": "2024-09-08T22:38:55.504581Z",
-  "execution_time": "300.017ms"
+  "execution_time": "300000"
 }
 ```
 
@@ -130,7 +130,7 @@ The output will look like this
   },
   ...
   "called_at": "2024-09-08T22:49:27.741989Z",
-  "execution_time": "279.025ms"
+  "execution_time": "279000"
 }
 ```
 
@@ -170,7 +170,7 @@ You can see the response body in the logged output:
   },
   ...
   "called_at": "2024-09-08T23:05:14.487961Z",
-  "execution_time": "17µs"
+  "execution_time": "12"
 }
 ```
 
@@ -235,7 +235,7 @@ The response body returned by **ResponderAPI** will contain the following entrie
     ]
   },
   "called_at": "2024-09-09T10:01:56.766208Z",
-  "execution_time": "26µs"
+  "execution_time": "28"
 }
 ```
 
@@ -272,7 +272,7 @@ The headers passed in the `header` param will be listed in the response payload:
   },
   ...
   "called_at": "2024-09-09T10:38:15.672904Z",
-  "execution_time": "41µs"
+  "execution_time": "19"
 }
 ```
 
@@ -334,7 +334,7 @@ headers correctly appear in `expected_headers`, but only `Content-Type` appears 
   },
   ...
   "called_at": "2024-09-09T20:59:52.916018Z",
-  "execution_time": "21µs"
+  "execution_time": "15"
 }
 
 ```
@@ -384,7 +384,7 @@ logs. The payload looks similar to the one below:
   },
   "responderapi_id": "7d946e42-6f46-11ef-ada2-1ec32bd4abd5",
   "called_at": "2024-09-10T07:30:01.704706Z",
-  "execution_time": "109µs"
+  "execution_time": "21"
 }
 ```
 
@@ -405,14 +405,14 @@ returned by **ResponderAPI**;
 - `params` -- request URL query params, see the list of param attributes below;
 - `responderapi_id` -- the id of the **ResponderAPI** process, assigned on container startup;
 - `called_at` -- date and time of the request;
-- `execution_time` -- request processing time.
+- `execution_time` -- request processing time in microseconds, often 0, because **ResponderAPI** typically handles requests in under 100 microseconds.
 
 ### `params` attributes
 
 The `params` attribute returned by **ResponderAPI** contains request URL query params unpacked by **ResponderAPI**. 
 
-- `delay` -- the value of the `delay` param;
-- `random_delay` -- if present, will contain either `min` and `max` attributes; if only `max` attribute is used it 
+- `delay` -- the value of the `delay` param (in milliseconds);
+- `random_delay` -- if present, will contain either `min` and `max` attributes (in milliseconds); if only `max` attribute is used it 
 means no `min` value was provided;
 - `headers` -- base64 encoded *response* headers and their values, separated with commas (`,`);
 - `no_headers` -- set to `true` if `no_headers` param was used;
