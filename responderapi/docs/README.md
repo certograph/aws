@@ -3,7 +3,8 @@ Responder API -- mocking and testing APIs in the cloud
 
 * **ResponderAPI** is a zero-configuration mock HTTP server designed to make it easy to implement test APIs.
 * **ResponderAPI** is available as a Docker container and is meant to run in **AWS Elastic Container Service (ECS)** 
-clusters using **AWS EC2** or **AWS Fargate** hosts.
+clusters using **AWS EC2** or **AWS Fargate** hosts. You can also deploy it in your **AWS Elastic Kubernetes Service 
+(EKS)** clusters.
 
 ## Security and Data Safety
 
@@ -15,7 +16,7 @@ clusters using **AWS EC2** or **AWS Fargate** hosts.
 
 ## Deploying ResponderAPI
 
-**ResponderAPI** is available from **AWS Marketplace**. Click here to add it to your organisation's own **AWS 
+**ResponderAPI** is [available](https://aws.amazon.com/marketplace/pp/prodview-ppgokpdvkwcbg) on **AWS Marketplace**. Click here to add it to your organisation's own **AWS 
 Marketplace Catalog**.
 
 > Please note that while the **AWS Marketplace** website mentions *subscription* **ResponderAPI** pricing is based on 
