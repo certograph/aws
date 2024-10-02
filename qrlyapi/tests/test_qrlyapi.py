@@ -11,7 +11,7 @@ showcase what QRlyAPI is capable of.
 """
 
 # This will be the URL ot the IP address of the host running ResponderAPI
-SERVER_HOST = "44.197.115.232:8080"
+SERVER_HOST = "remotehost:8080"
 # Out of the box, ResponderAPI supports HTTP. If you want to test with HTTPS, set up an HTTPS
 # proxy and point it to the host running ResponderAPI
 REQUEST_PROTOCOL = "http"
