@@ -10,10 +10,10 @@ import requests
 showcase what QRlyAPI is capable of.
 """
 
-# This will be the URL ot the IP address of the host running ResponderAPI
+# This will be the URL ot the IP address of the host running QRlyAPI
 SERVER_HOST = "remotehost:8080"
-# Out of the box, ResponderAPI supports HTTP. If you want to test with HTTPS, set up an HTTPS
-# proxy and point it to the host running ResponderAPI
+# Out of the box, QRlyAPI supports HTTP. If you want to test with HTTPS, set up an HTTPS
+# proxy and point it to the host running QRlyAPI
 REQUEST_PROTOCOL = "http"
 # Some clients may use other versions of the HTTP protocol. If you see failures on assertions
 # related to HTTP protocol version, change the value of REQUEST_PROTOCOL_VERSION, unless you
